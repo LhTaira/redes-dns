@@ -1,0 +1,20 @@
+# docker-compose up -d
+version: '3.5'
+
+services:
+  primary:
+    restart: always
+    image: labbsr0x/dns-bind9
+    ports:
+    - "53:53/udp"
+    - "53:53/tcp"
+    volumes:
+    - ./primary:/data # Change volume path
+  secondar9:
+    restart: always
+    image: labbsr0x/dns-bind9
+    ports:
+    - "54:53/udp"
+    - "54:53/tcp"
+    volumes:
+    - ./secondary:/data
